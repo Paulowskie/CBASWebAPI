@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTO;
+using Manager.Contacts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,9 +11,11 @@ namespace WebAPI.Controller
 {
     public class HelloController : ApiController
     {
-        public string Get()
+        dbaContacts _dbaContacts = new dbaContacts();
+        public List<ContactDTO> Get()
         {
-            return "Hello World";
+            var result = _dbaContacts.selectAll().ToList();
+            return result;
         }
     }
 }
